@@ -10,12 +10,15 @@ class Piece;
 class Square : public sf::RectangleShape
 {
     public:
+    Square();
     Square(unsigned short rank, unsigned short file, sf::Color color, const sf::Vector2f &size);
     
     Piece* piece();
     sf::Color color();
 
     void setPiece(Piece *piece);
+    void setRankFile(unsigned short rank, unsigned short file);
+    void setColor(sf::Color color);
 
     private:
     std::vector<Piece*> m_pieces; /* pieces that can strike at the square */
