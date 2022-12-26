@@ -6,7 +6,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "Chess");
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Chess");
     Square s(0, 0, sf::Color::White, sf::Vector2f(50, 50));
     s.setPosition(sf::Vector2f(5.0, 5.0));
     while (window.isOpen()) {
