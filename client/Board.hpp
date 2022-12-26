@@ -12,6 +12,7 @@ class Board
 
     private:
     Square m_board[8][8];
+    sf::Vector2f startPos;
 };
 
 #endif

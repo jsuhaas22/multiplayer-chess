@@ -4,6 +4,7 @@ Square::Square() : sf::RectangleShape(sf::Vector2f(0, 0))
 {
     m_rank = m_file = 9; /* signifies it is not set yet */
     m_color = sf::Color::White;
+    setSize(sf::Vector2f(50, 50));
 }
 
 Square::Square(unsigned short rank, unsigned short file, sf::Color color, const sf::Vector2f &size) :
