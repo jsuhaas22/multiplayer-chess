@@ -36,3 +36,14 @@ void Square::setRankFile(unsigned short rank, unsigned short file)
     m_rank = rank;
     m_file = file;
 }
+
+void Square::draw(sf::RenderWindow &window)
+{
+    window.draw(*this);
+}
+
+void Square::setColor(sf::Color color)
+{
+    m_color = color;
+    setFillColor(m_color);
+}

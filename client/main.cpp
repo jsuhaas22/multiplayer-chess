@@ -1,4 +1,4 @@
-#include "Square.hpp"
+#include "Board.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -7,20 +7,16 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Chess");
-    Square s(0, 0, sf::Color::White, sf::Vector2f(50, 50));
-    s.setPosition(sf::Vector2f(5.0, 5.0));
+    Board b;
     while (window.isOpen()) {
         sf::Event evt;
         while (window.pollEvent(evt)) {
             if (evt.type == sf::Event::Closed) {
                 window.close();
-            } else if (evt.type == sf::Event::MouseButtonPressed) {
-                std::cout << 0 << 0 << std::endl;
-                window.close();
             }
         }
         window.clear();
-        window.draw(s);
+        b.draw(window);
         window.display();
     }
     return 0;
