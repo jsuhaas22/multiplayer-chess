@@ -15,6 +15,8 @@ public:
     
     Piece* piece();
     sf::Color color();
+    unsigned short rank() const;
+    unsigned short file() const;
 
     void setPiece(Piece *piece);
     void setRankFile(unsigned short rank, unsigned short file);

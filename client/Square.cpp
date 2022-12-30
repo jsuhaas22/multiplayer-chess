@@ -26,6 +26,16 @@ sf::Color Square::color()
     return m_color;
 }
 
+unsigned short Square::rank() const
+{
+    return m_rank;
+}
+
+unsigned short Square::file() const
+{
+    return m_file;
+}
+
 void Square::setPiece(Piece *piece)
 {
     m_piece = piece;
