@@ -7,12 +7,12 @@
 
 class Board
 {
-    public:
+public:
     Board();
 
     void draw(sf::RenderWindow &window);
 
-    private:
+private:
     Square m_board[8][8];
     sf::Vector2f startPos;
 };

@@ -11,4 +11,4 @@ Square.o : Square.cpp Square.hpp
 	g++ -c Square.cpp
 
 clean:
-	rm chess main.o Square.o
+	rm chess main.o Square.o Board.o

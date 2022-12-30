@@ -9,7 +9,7 @@ class Piece;
 
 class Square : public sf::RectangleShape
 {
-    public:
+public:
     Square();
     Square(unsigned short rank, unsigned short file, sf::Color color, const sf::Vector2f &size);
     
@@ -22,7 +22,7 @@ class Square : public sf::RectangleShape
 
     void draw(sf::RenderWindow &window);
 
-    private:
+private:
     std::vector<Piece*> m_pieces; /* pieces that can strike at the square */
     Piece *m_piece; /* piece currently on it */
     sf::Color m_color; /* colour of the square */
