@@ -11,7 +11,7 @@ Board::Board()
     for (int i = 7; i >= 0; --i) {
         for (int j = 7; j >= 0; --j) {
             x += 50;
-            m_board[i][j] = new Square(i, j, (i + j) % 2 ? sf::Color::Black : sf::Color::White, sf::Vector2f(50, 50), sf::Vector2f(x, y));
+            m_board[i][j] = new Square(i, j, (i + j) % 2 ? sf::Color(60, 179, 113) : sf::Color::White, sf::Vector2f(50, 50), sf::Vector2f(x, y));
         }
         y += 50;
         x = startPos.x;
