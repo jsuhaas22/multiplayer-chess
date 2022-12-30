@@ -2,6 +2,7 @@
 #define PIECE
 
 #include "../Square.hpp"
+#include "../Board.hpp"
 #include <SFML/Graphics.hpp>
 
 class Piece : public sf::Sprite
@@ -22,15 +23,18 @@ public:
 
     Piece(Square *square, Color color, Type type, std::string path, int pts);
 
-    virtual std::vector<std::pair<int, int>> generateMoves() = 0;
+    virtual void generateMoves(Board &board) = 0;
 
     Square *square();
     Color color() const;
     Type type() const;
     int pts() const;
     bool isAlive() const;
+    std::vector<Square*> moves();
 
-protected:
+    std::vector<Square*> m_moves;
+
+private:
     Square *m_square; /* square it is currently on */
     Color m_color;
     Type m_type;

@@ -32,3 +32,8 @@ int Piece::pts() const
 {
     return m_pts;
 }
+
+std::vector<Square*> Piece::moves()
+{
+    return m_moves;
+}
