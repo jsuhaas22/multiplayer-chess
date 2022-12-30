@@ -1,7 +1,7 @@
 #include "Pawn.hpp"
 
-Pawn::Pawn(Piece::Color color, Square *square) :
-    Piece(square, color, Type::Pawn, color == Piece::White ? "Resources/WhitePawn.png" : "Resources/BlackPawn.png", 1)
+Pawn::Pawn(Piece::Color color, Square *square, const sf::Vector2f &pos) :
+    Piece(square, color, Type::Pawn, color == Piece::White ? "Pieces/Resources/WhitePawn.png" : "Pieces/Resources/BlackPawn.png", 1, pos)
 {
 }
 

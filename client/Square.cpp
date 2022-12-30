@@ -1,4 +1,5 @@
 #include "Square.hpp"
+#include "Pieces/Piece.hpp"
 
 Square::Square() : sf::RectangleShape(sf::Vector2f(0, 0))
 {
@@ -12,7 +13,8 @@ Square::Square(unsigned short rank, unsigned short file, sf::Color color, const 
     m_rank(rank), 
     m_file(file), 
     m_color(color),
-    m_pos(pos)
+    m_pos(pos),
+    m_piece(nullptr)
 {
     setFillColor(m_color);
     setPosition(m_pos);
@@ -57,6 +59,9 @@ void Square::setRankFile(unsigned short rank, unsigned short file)
 void Square::draw(sf::RenderWindow &window)
 {
     window.draw(*this);
+    if (m_piece) {
+        m_piece->draw(window);
+    }
 }
 
 void Square::setColor(sf::Color color)

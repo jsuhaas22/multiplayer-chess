@@ -1,6 +1,6 @@
 #include "Piece.hpp"
 
-Piece::Piece(Square *square, Piece::Color color, Piece::Type type, std::string path, int pts) :
+Piece::Piece(Square *square, Piece::Color color, Piece::Type type, std::string path, int pts, const sf::Vector2f &pos) :
     sf::Sprite(),
     m_square(square),
     m_color(color),
@@ -9,8 +9,15 @@ Piece::Piece(Square *square, Piece::Color color, Piece::Type type, std::string p
 {
     m_texture.loadFromFile(path);
     setTexture(m_texture);
+    setPosition(pos);
+    setScale(0.05, 0.05);
 
     m_isAlive = true;
+}
+
+void Piece::draw(sf::RenderWindow &window)
+{
+    window.draw(*this);
 }
 
 Square* Piece::square()

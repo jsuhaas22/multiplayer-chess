@@ -7,7 +7,7 @@ main.o : main.cpp Board.hpp
 Board.o : Board.cpp Board.hpp
 	g++ -c Board.cpp
 
-Square.o : Square.cpp Square.hpp
+Square.o : Square.cpp Square.hpp Pieces/Piece.hpp
 	g++ -c Square.cpp
 
 Piece.o : Pieces/Piece.cpp Pieces/Piece.hpp

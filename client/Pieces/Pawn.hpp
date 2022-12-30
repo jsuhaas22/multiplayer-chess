@@ -6,7 +6,7 @@
 class Pawn : public Piece
 {
 public:
-    Pawn(Piece::Color color, Square *square);
+    Pawn(Piece::Color color, Square *square, const sf::Vector2f &pos);
 
     void generateMoves(Board &board);
 

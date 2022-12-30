@@ -13,6 +13,7 @@ public:
     
     Square *m_board[8][8];
 private:
+    void populateBoard();
     sf::Vector2f startPos;
 };
 

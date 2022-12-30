@@ -2,7 +2,6 @@
 #define SQUARE
 
 #include <SFML/Graphics.hpp>
-
 #include <vector>
 
 class Piece;
