@@ -7,13 +7,15 @@ Square::Square() : sf::RectangleShape(sf::Vector2f(0, 0))
     setSize(sf::Vector2f(50, 50));
 }
 
-Square::Square(unsigned short rank, unsigned short file, sf::Color color, const sf::Vector2f &size) :
+Square::Square(unsigned short rank, unsigned short file, sf::Color color, const sf::Vector2f &size, const sf::Vector2f pos) :
     sf::RectangleShape(size),
     m_rank(rank), 
     m_file(file), 
-    m_color(color)
+    m_color(color),
+    m_pos(pos)
 {
     setFillColor(m_color);
+    setPosition(m_pos);
 }
 
 Piece* Square::piece()
@@ -24,6 +26,11 @@ Piece* Square::piece()
 sf::Color Square::color()
 {
     return m_color;
+}
+
+sf::Vector2f Square::pos() const
+{
+    return m_pos;
 }
 
 unsigned short Square::rank() const
