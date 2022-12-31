@@ -4,6 +4,7 @@
 #include "Pieces/Knight.hpp"
 #include "Pieces/Bishop.hpp"
 #include "Pieces/Queen.hpp"
+#include "Pieces/King.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -71,6 +72,12 @@ void Board::populateBoard()
     m_board[4][7]->setPiece(p);
     p = new Queen(Piece::White, m_board[4][0], m_board[4][0]->pos());
     m_board[4][0]->setPiece(p);
+
+    /* kings */
+    p = new King(Piece::Black, m_board[3][7], m_board[3][7]->pos());
+    m_board[3][7]->setPiece(p);
+    p = new King(Piece::White, m_board[3][0], m_board[3][0]->pos());
+    m_board[3][0]->setPiece(p);
 }
 
 void Board::draw(sf::RenderWindow &window)
