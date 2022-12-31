@@ -20,4 +20,4 @@ Castle.o : Pieces/Castle.cpp Pieces/Castle.hpp
 	g++ -c Pieces/Castle.cpp
 
 clean:
-	rm chess main.o Square.o Board.o Piece.o Pawn.o
+	rm chess main.o Square.o Board.o Piece.o Pawn.o Castle.o
