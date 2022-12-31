@@ -21,7 +21,8 @@ Board::Board()
         y += 50;
         x = m_startPos.x;
     }
-
+    
+    m_highlightedSquare = nullptr;
     populateBoard();
 }
 
@@ -92,10 +93,12 @@ void Board::draw(sf::RenderWindow &window)
 void Board::handleMouseEvt(const sf::Vector2f &pos)
 {
     std::pair<short, short> indices = posToIndices(pos);
-    if (indices.first == -1 && indices.second == -1) {
+    dehighlight();
+    if (indices.first == -1 && indices.second == -1 || m_board[indices.first][indices.second]->isEmpty() || m_board[indices.first][indices.second]->isEmpty()) {
         return;
     }
-    m_board[indices.first][indices.second]->setFillColor(sf::Color::Cyan);
+    m_highlightedSquare = m_board[indices.first][indices.second];
+    m_highlightedSquare->setFillColor(sf::Color::Cyan);
 }
 
 std::pair<short, short> Board::posToIndices(const sf::Vector2f &pos)
@@ -112,4 +115,12 @@ std::pair<short, short> Board::posToIndices(const sf::Vector2f &pos)
     short rank = 7 - (int)((y - m_startPos.y) / sqSize);
     short file = (x - m_startPos.x) / sqSize;
     return std::pair<short, short>(file, rank);
+}
+
+void Board::dehighlight()
+{
+    if (m_highlightedSquare) {
+        m_highlightedSquare->setFillColor((m_highlightedSquare->rank() + m_highlightedSquare->file()) % 2 ?
+                                         sf::Color(60, 179, 113) : sf::Color::White);
+    }
 }

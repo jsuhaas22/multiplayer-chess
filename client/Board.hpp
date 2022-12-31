@@ -16,7 +16,9 @@ public:
 private:
     void populateBoard();
     std::pair<short, short> posToIndices(const sf::Vector2f &pos);
+    void dehighlight();
     sf::Vector2f m_startPos;
+    Square *m_highlightedSquare;
 };
 
 #endif
