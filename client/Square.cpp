@@ -45,6 +45,11 @@ short Square::file() const
     return m_file;
 }
 
+bool Square::isEmpty() const
+{
+    return m_piece == nullptr;
+}
+
 void Square::setPiece(Piece *piece)
 {
     m_piece = piece;

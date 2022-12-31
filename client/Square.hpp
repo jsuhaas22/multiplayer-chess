@@ -17,6 +17,7 @@ public:
     sf::Vector2f pos() const;
     short rank() const;
     short file() const;
+    bool isEmpty() const;
 
     void setPiece(Piece *piece);
     void setRankFile(short rank, short file);
