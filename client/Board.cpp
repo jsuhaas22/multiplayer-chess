@@ -1,6 +1,7 @@
 #include "Board.hpp"
 #include "Pieces/Pawn.hpp"
 #include "Pieces/Castle.hpp"
+#include "Pieces/Knight.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -42,6 +43,16 @@ void Board::populateBoard()
     m_board[0][0]->setPiece(p);
     p = new Castle(Piece::White, m_board[7][0], m_board[7][0]->pos());
     m_board[7][0]->setPiece(p);
+
+    /* knights */
+    p = new Knight(Piece::Black, m_board[1][7], m_board[1][7]->pos());
+    m_board[1][7]->setPiece(p);
+    p = new Knight(Piece::Black, m_board[6][7], m_board[6][7]->pos());
+    m_board[6][7]->setPiece(p);
+    p = new Knight(Piece::White, m_board[1][0], m_board[1][0]->pos());
+    m_board[1][0]->setPiece(p);
+    p = new Knight(Piece::White, m_board[6][0], m_board[6][0]->pos());
+    m_board[6][0]->setPiece(p);
 }
 
 void Board::draw(sf::RenderWindow &window)
