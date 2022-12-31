@@ -3,6 +3,7 @@
 #include "Pieces/Castle.hpp"
 #include "Pieces/Knight.hpp"
 #include "Pieces/Bishop.hpp"
+#include "Pieces/Queen.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -64,6 +65,12 @@ void Board::populateBoard()
     m_board[2][0]->setPiece(p);
     p = new Bishop(Piece::White, m_board[5][0], m_board[5][0]->pos());
     m_board[5][0]->setPiece(p);
+
+    /* queens */
+    p = new Queen(Piece::Black, m_board[4][7], m_board[4][7]->pos());
+    m_board[4][7]->setPiece(p);
+    p = new Queen(Piece::White, m_board[4][0], m_board[4][0]->pos());
+    m_board[4][0]->setPiece(p);
 }
 
 void Board::draw(sf::RenderWindow &window)
