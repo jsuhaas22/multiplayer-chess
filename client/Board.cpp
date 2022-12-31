@@ -1,5 +1,6 @@
 #include "Board.hpp"
 #include "Pieces/Pawn.hpp"
+#include "Pieces/Castle.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -22,13 +23,25 @@ Board::Board()
 
 void Board::populateBoard()
 {
+    Piece *p;
+
     /* pawns */
     for (int i = 0; i < 8; ++i) {
-        Piece *p = new Pawn(Piece::White, m_board[1][i], m_board[1][i]->pos());
+        p = new Pawn(Piece::White, m_board[1][i], m_board[1][i]->pos());
         m_board[1][i]->setPiece(p);
         p = new Pawn(Piece::Black, m_board[6][i], m_board[6][i]->pos());
         m_board[6][i]->setPiece(p);
     }
+
+    /* castles */
+    p = new Castle(Piece::Black, m_board[7][7], m_board[7][7]->pos());
+    m_board[7][7]->setPiece(p);
+    p = new Castle(Piece::Black, m_board[7][0], m_board[7][0]->pos());
+    m_board[7][0]->setPiece(p);
+    p = new Castle(Piece::White, m_board[0][0], m_board[0][0]->pos());
+    m_board[0][0]->setPiece(p);
+    p = new Castle(Piece::White, m_board[0][7], m_board[0][7]->pos());
+    m_board[0][7]->setPiece(p);
 }
 
 void Board::draw(sf::RenderWindow &window)

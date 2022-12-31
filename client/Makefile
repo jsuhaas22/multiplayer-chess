@@ -1,10 +1,10 @@
-chess : main.o Board.o Square.o Piece.o Pawn.o
-	g++ -lsfml-graphics -lsfml-window -lsfml-system main.o Board.o Square.o Piece.o Pawn.o -o chess
+chess : main.o Board.o Square.o Piece.o Pawn.o Castle.o
+	g++ -lsfml-graphics -lsfml-window -lsfml-system main.o Board.o Square.o Piece.o Pawn.o Castle.o -o chess
 
 main.o : main.cpp Board.hpp
 	g++ -c main.cpp
 
-Board.o : Board.cpp Board.hpp
+Board.o : Board.cpp Board.hpp Pieces/Pawn.hpp Pieces/Castle.hpp
 	g++ -c Board.cpp
 
 Square.o : Square.cpp Square.hpp Pieces/Piece.hpp
@@ -15,6 +15,9 @@ Piece.o : Pieces/Piece.cpp Pieces/Piece.hpp
 
 Pawn.o : Pieces/Pawn.cpp Pieces/Pawn.hpp
 	g++ -c Pieces/Pawn.cpp
+
+Castle.o : Pieces/Castle.cpp Pieces/Castle.hpp
+	g++ -c Pieces/Castle.cpp
 
 clean:
 	rm chess main.o Square.o Board.o Piece.o Pawn.o
