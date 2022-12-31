@@ -10,16 +10,16 @@
 
 Board::Board()
 {
-    startPos = sf::Vector2f(678, 258);
+    m_startPos = sf::Vector2f(678, 258);
 
-    int x = startPos.x, y = startPos.y;
+    int x = m_startPos.x, y = m_startPos.y;
     for (int i = 7; i >= 0; --i) {
-        for (int j = 0; j < 8; ++j) {
-            x += 50;
+        for (int j = 0; j < 8; ++j) {     
             m_board[j][i] = new Square(j, i, (i + j) % 2 ? sf::Color(60, 179, 113) : sf::Color::White, sf::Vector2f(50, 50), sf::Vector2f(x, y));
+            x += 50;
         }
         y += 50;
-        x = startPos.x;
+        x = m_startPos.x;
     }
 
     populateBoard();
@@ -87,4 +87,29 @@ void Board::draw(sf::RenderWindow &window)
             m_board[i][j]->draw(window);
         }
     }
+}
+
+void Board::handleMouseEvt(const sf::Vector2f &pos)
+{
+    std::pair<short, short> indices = posToIndices(pos);
+    if (indices.first == -1 && indices.second == -1) {
+        return;
+    }
+    m_board[indices.first][indices.second]->setFillColor(sf::Color::Cyan);
+}
+
+std::pair<short, short> Board::posToIndices(const sf::Vector2f &pos)
+{
+    const float x = pos.x;
+    const float y = pos.y;
+    const float sqSize = 50;
+
+    /* if it wasn't the board's area that was clicked, return values to signify it */
+    if (x < m_startPos.x || x > m_startPos.x + 8 * sqSize || y < m_startPos.y || y > m_startPos.y + 8 * sqSize) {
+        return std::pair<short, short>(-1, -1);
+    }
+
+    short rank = 7 - (int)((y - m_startPos.y) / sqSize);
+    short file = (x - m_startPos.x) / sqSize;
+    return std::pair<short, short>(file, rank);
 }
