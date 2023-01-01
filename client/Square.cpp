@@ -50,6 +50,11 @@ bool Square::isEmpty() const
     return m_piece == nullptr;
 }
 
+bool Square::isHighlighted() const
+{
+    return m_color != getFillColor();
+}
+
 void Square::setPiece(Piece *piece)
 {
     m_piece = piece;

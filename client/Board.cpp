@@ -73,13 +73,28 @@ void Board::draw(sf::RenderWindow &window)
 void Board::handleMouseEvt(const sf::Vector2f &pos)
 {
     std::pair<short, short> indices = posToIndices(pos);
-    dehighlightSquares();
-    if (indices.first != -1 && indices.second != -1 && !m_board[indices.first][indices.second]->isEmpty()) {
+
+    /* click was outside the board area */
+    if (indices.first == -1 && indices.second == -1) {
+        return;
+    }
+
+    /* click was on a square with a piece when no piece is already selected */
+    if (!m_highlightedSquare && !m_board[indices.first][indices.second]->isEmpty()) {
         m_highlightedSquare = m_board[indices.first][indices.second];
         m_highlightedSquare->piece()->generateMoves(*this);
         m_highlightedSquares = m_highlightedSquare->piece()->moves();
         highlightSquares();
+        return;
     }
+    
+    /* click was on a square that is a potential destination for selected piece */
+    if (m_highlightedSquare && m_board[indices.first][indices.second]->isHighlighted() && m_highlightedSquare != m_board[indices.first][indices.second]) {
+        m_highlightedSquare->piece()->move(m_board[indices.first][indices.second]);
+        m_highlightedSquare->setPiece(nullptr);
+    }
+    dehighlightSquares();
+    m_highlightedSquare = nullptr;
 }
 
 std::pair<short, short> Board::posToIndices(const sf::Vector2f &pos)

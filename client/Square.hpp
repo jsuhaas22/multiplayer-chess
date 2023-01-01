@@ -18,6 +18,7 @@ public:
     short rank() const;
     short file() const;
     bool isEmpty() const;
+    bool isHighlighted() const;
 
     void setPiece(Piece *piece);
     void setRankFile(short rank, short file);
