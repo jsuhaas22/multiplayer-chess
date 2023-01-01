@@ -6,7 +6,7 @@
 class Queen : public Piece
 {
 public:
-    Queen(Piece::Color color, Square *square, const sf::Vector2f &pos);
+    Queen(Piece::Color color, Square *square);
     void generateMoves(Board &board);
 
 private:

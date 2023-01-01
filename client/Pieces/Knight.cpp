@@ -1,7 +1,7 @@
 #include "Knight.hpp"
 
-Knight::Knight(Piece::Color color, Square *square, const sf::Vector2f &pos) :
-    Piece(square, color, Piece::Knight, color == Piece::White ? "Pieces/Resources/WhiteKnight.png" : "Pieces/Resources/BlackKnight.png", 3, pos)
+Knight::Knight(Piece::Color color, Square *square) :
+    Piece(square, color, Piece::Knight, color == Piece::White ? "Pieces/Resources/WhiteKnight.png" : "Pieces/Resources/BlackKnight.png", 3)
 {
 }
 

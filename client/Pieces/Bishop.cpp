@@ -1,7 +1,7 @@
 #include "Bishop.hpp"
 
-Bishop::Bishop(Piece::Color color, Square *square, const sf::Vector2f &pos) :
-    Piece(square, color, Type::Bishop, color == Color::White ? "Pieces/Resources/WhiteBishop.png" : "Pieces/Resources/BlackBishop.png", 4, pos)
+Bishop::Bishop(Piece::Color color, Square *square) :
+    Piece(square, color, Type::Bishop, color == Color::White ? "Pieces/Resources/WhiteBishop.png" : "Pieces/Resources/BlackBishop.png", 4)
 {
 }
 

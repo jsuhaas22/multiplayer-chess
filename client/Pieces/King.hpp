@@ -6,7 +6,7 @@
 class King : public Piece
 {
 public:
-    King(Piece::Color color, Square *square, const sf::Vector2f &pos);
+    King(Piece::Color color, Square *square);
     void generateMoves(Board &board);
 
 private:

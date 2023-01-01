@@ -28,57 +28,37 @@ Board::Board()
 
 void Board::populateBoard()
 {
-    Piece *p;
-
     /* pawns */
     for (int i = 0; i < 8; ++i) {
-        p = new Pawn(Piece::White, m_board[i][1], m_board[i][1]->pos());
-        m_board[i][1]->setPiece(p);
-        p = new Pawn(Piece::Black, m_board[i][6], m_board[i][6]->pos());
-        m_board[i][6]->setPiece(p);
+        new Pawn(Piece::White, m_board[i][1]);
+        new Pawn(Piece::Black, m_board[i][6]);
     }
 
     /* castles */
-    p = new Castle(Piece::Black, m_board[7][7], m_board[7][7]->pos());
-    m_board[7][7]->setPiece(p);
-    p = new Castle(Piece::Black, m_board[0][7], m_board[0][7]->pos());
-    m_board[0][7]->setPiece(p);
-    p = new Castle(Piece::White, m_board[0][0], m_board[0][0]->pos());
-    m_board[0][0]->setPiece(p);
-    p = new Castle(Piece::White, m_board[7][0], m_board[7][0]->pos());
-    m_board[7][0]->setPiece(p);
+    new Castle(Piece::Black, m_board[7][7]);
+    new Castle(Piece::Black, m_board[0][7]);
+    new Castle(Piece::White, m_board[0][0]);
+    new Castle(Piece::White, m_board[7][0]);
 
     /* knights */
-    p = new Knight(Piece::Black, m_board[1][7], m_board[1][7]->pos());
-    m_board[1][7]->setPiece(p);
-    p = new Knight(Piece::Black, m_board[6][7], m_board[6][7]->pos());
-    m_board[6][7]->setPiece(p);
-    p = new Knight(Piece::White, m_board[1][0], m_board[1][0]->pos());
-    m_board[1][0]->setPiece(p);
-    p = new Knight(Piece::White, m_board[6][0], m_board[6][0]->pos());
-    m_board[6][0]->setPiece(p);
+    new Knight(Piece::Black, m_board[1][7]);
+    new Knight(Piece::Black, m_board[6][7]);
+    new Knight(Piece::White, m_board[1][0]);
+    new Knight(Piece::White, m_board[6][0]);
 
     /* bishops */
-    p = new Bishop(Piece::Black, m_board[2][7], m_board[2][7]->pos());
-    m_board[2][7]->setPiece(p);
-    p = new Bishop(Piece::Black, m_board[5][7], m_board[5][7]->pos());
-    m_board[5][7]->setPiece(p);
-    p = new Bishop(Piece::White, m_board[2][0], m_board[2][0]->pos());
-    m_board[2][0]->setPiece(p);
-    p = new Bishop(Piece::White, m_board[5][0], m_board[5][0]->pos());
-    m_board[5][0]->setPiece(p);
+    new Bishop(Piece::Black, m_board[2][7]);
+    new Bishop(Piece::Black, m_board[5][7]);
+    new Bishop(Piece::White, m_board[2][0]);
+    new Bishop(Piece::White, m_board[5][0]);
 
     /* queens */
-    p = new Queen(Piece::Black, m_board[4][7], m_board[4][7]->pos());
-    m_board[4][7]->setPiece(p);
-    p = new Queen(Piece::White, m_board[4][0], m_board[4][0]->pos());
-    m_board[4][0]->setPiece(p);
+    new Queen(Piece::Black, m_board[4][7]);
+    new Queen(Piece::White, m_board[4][0]);
 
     /* kings */
-    p = new King(Piece::Black, m_board[3][7], m_board[3][7]->pos());
-    m_board[3][7]->setPiece(p);
-    p = new King(Piece::White, m_board[3][0], m_board[3][0]->pos());
-    m_board[3][0]->setPiece(p);
+    new King(Piece::Black, m_board[3][7]);
+    new King(Piece::White, m_board[3][0]);
 }
 
 void Board::draw(sf::RenderWindow &window)

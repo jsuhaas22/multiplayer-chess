@@ -1,7 +1,7 @@
 #include "King.hpp"
 
-King::King(Piece::Color color, Square *square, const sf::Vector2f &pos) :
-    Piece(square, color, Type::King, color == Color::White ? "Pieces/Resources/WhiteKing.png" : "Pieces/Resources/BlackKing.png", 10, pos)
+King::King(Piece::Color color, Square *square) :
+    Piece(square, color, Type::King, color == Color::White ? "Pieces/Resources/WhiteKing.png" : "Pieces/Resources/BlackKing.png", 10)
 {
     m_hasMoved = false;
 }

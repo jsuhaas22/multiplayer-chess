@@ -1,7 +1,7 @@
 #include "Castle.hpp"
 
-Castle::Castle(Piece::Color color, Square *square, const sf::Vector2f &pos) :
-    Piece(square, color, Type::Castle, color == Color::White ? "Pieces/Resources/WhiteCastle.png" : "Pieces/Resources/BlackCastle.png", 5, pos)
+Castle::Castle(Piece::Color color, Square *square) :
+    Piece(square, color, Type::Castle, color == Color::White ? "Pieces/Resources/WhiteCastle.png" : "Pieces/Resources/BlackCastle.png", 5)
 {
     m_hasMoved = false;
 }

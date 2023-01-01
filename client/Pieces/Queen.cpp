@@ -1,7 +1,7 @@
 #include "Queen.hpp"
 
-Queen::Queen(Piece::Color color, Square *square, const sf::Vector2f &pos) :
-    Piece(square, color, Type::Queen, color == Color::White ? "Pieces/Resources/WhiteQueen.png" : "Pieces/Resources/BlackQueen.png", 8, pos)
+Queen::Queen(Piece::Color color, Square *square) :
+    Piece(square, color, Type::Queen, color == Color::White ? "Pieces/Resources/WhiteQueen.png" : "Pieces/Resources/BlackQueen.png", 8)
 {
 }
 

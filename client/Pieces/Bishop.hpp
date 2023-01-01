@@ -6,7 +6,7 @@
 class Bishop : public Piece
 {
 public:
-    Bishop(Piece::Color color, Square *square, const sf::Vector2f &pos);
+    Bishop(Piece::Color color, Square *square);
     void generateMoves(Board &board);
 };
 

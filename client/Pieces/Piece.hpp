@@ -21,7 +21,7 @@ public:
         King
     };
 
-    Piece(Square *square, Color color, Type type, std::string path, int pts, const sf::Vector2f &pos);
+    Piece(Square *square, Color color, Type type, std::string path, int pts);
 
     virtual void generateMoves(Board &board) = 0;
     void draw(sf::RenderWindow &window);

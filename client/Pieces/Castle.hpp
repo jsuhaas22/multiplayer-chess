@@ -6,7 +6,7 @@
 class Castle : public Piece
 {
 public:
-    Castle(Piece::Color color, Square *square, const sf::Vector2f &pos);
+    Castle(Piece::Color color, Square *square);
     void generateMoves(Board &board);
 
 private:
