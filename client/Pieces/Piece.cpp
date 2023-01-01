@@ -30,6 +30,7 @@ void Piece::setSquare(Square *square)
 {
     m_square = square;
     m_square->setPiece(this);
+    setPosition(m_square->pos());
 }
 
 Square* Piece::square()
