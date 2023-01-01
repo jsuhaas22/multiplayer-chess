@@ -52,7 +52,7 @@ void Queen::generateLineMoves(Board &board, short file, short rank)
     }
 }
 
-void Queen::generateDiagonalMoves(Board &board, short rank, short file)
+void Queen::generateDiagonalMoves(Board &board, short file, short rank)
 {
     short i, j;
     
