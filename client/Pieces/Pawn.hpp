@@ -11,7 +11,8 @@ public:
     void generateMoves(Board &board);
 
 private:
-    unsigned short m_noOfMoves; /* helps decide if en passant is allowed and if 2 squares can be jumped */
+    bool isMoveValid(short file, short rank, Board &board) const;
+    short m_noOfMoves; /* helps decide if en passant is allowed and if 2 squares can be jumped */
 };
 
 #endif //PAWN
