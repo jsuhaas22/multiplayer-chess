@@ -120,7 +120,6 @@ void Board::dehighlightSquares()
 void Board::dehighlight(Square *square)
 {
     if (square) {
-        square->setFillColor((square->rank() + square->file()) % 2 ?
-                                         sf::Color(60, 179, 113) : sf::Color::White);
+        square->setFillColor(square->color());
     }
 }
