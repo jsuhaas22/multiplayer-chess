@@ -24,7 +24,9 @@ public:
     Piece(Square *square, Color color, Type type, std::string path, int pts);
 
     virtual void generateMoves(Board &board) = 0;
+    virtual void move(Square *square); /* sets the square, mostly. exception: King, Castle and Pawn. addl op req'd. */
     void draw(sf::RenderWindow &window);
+    void setSquare(Square *square); /* for King, Castle and Pawn to set m_square in their impl. of move() */
 
     Square *square();
     Color color() const;

@@ -46,3 +46,11 @@ void Castle::generateMoves(Board &board)
         m_moves.push_back(board.m_board[file][i]);
     }
 }
+
+void Castle::move(Square *square)
+{
+    setSquare(square);
+    if (!m_hasMoved) {
+        m_hasMoved = true;
+    }
+}

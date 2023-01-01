@@ -16,9 +16,20 @@ Piece::Piece(Square *square, Piece::Color color, Piece::Type type, std::string p
     m_square->setPiece(this);
 }
 
+void Piece::move(Square *square)
+{
+    setSquare(square);
+}
+
 void Piece::draw(sf::RenderWindow &window)
 {
     window.draw(*this);
+}
+
+void Piece::setSquare(Square *square)
+{
+    m_square = square;
+    m_square->setPiece(this);
 }
 
 Square* Piece::square()

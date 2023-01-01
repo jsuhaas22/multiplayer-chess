@@ -35,3 +35,9 @@ bool Pawn::isMoveValid(short file, short rank, Board &board) const
     return file >= 0 && file < 8 && rank >= 0 && rank < 8
         && !board.m_board[file][rank]->isEmpty() && board.m_board[file][rank]->piece()->color() != color();
 }
+
+void Pawn::move(Square *square)
+{
+    setSquare(square);
+    m_noOfMoves++;
+}

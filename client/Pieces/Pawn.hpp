@@ -9,6 +9,7 @@ public:
     Pawn(Piece::Color color, Square *square);
 
     void generateMoves(Board &board);
+    void move(Square *square);
 
 private:
     bool isMoveValid(short file, short rank, Board &board) const;
