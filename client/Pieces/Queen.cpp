@@ -20,7 +20,7 @@ void Queen::generateLineMoves(Board &board, short file, short rank)
     short i, j;
 
     /* left check */
-    for (i = file; i >= 0 && board.m_board[i][rank]->isEmpty(); --i) {
+    for (i = file - 1; i >= 0 && board.m_board[i][rank]->isEmpty(); --i) {
         m_moves.push_back(board.m_board[i][rank]);
     }
     if (i >= 0 && board.m_board[i][rank]->piece()->color() != color()) {
@@ -28,7 +28,7 @@ void Queen::generateLineMoves(Board &board, short file, short rank)
     }
 
     /* right check */
-    for (i = file; i < 8 && board.m_board[i][rank]->isEmpty(); ++i) {
+    for (i = file + 1; i < 8 && board.m_board[i][rank]->isEmpty(); ++i) {
         m_moves.push_back(board.m_board[i][rank]);
     }
     if (i < 8 && board.m_board[i][rank]->piece()->color() != color()) {
@@ -36,7 +36,7 @@ void Queen::generateLineMoves(Board &board, short file, short rank)
     }
 
     /* backward check */
-    for (i = rank; i >= 0 && board.m_board[file][i]->isEmpty(); --i) {
+    for (i = rank - 1; i >= 0 && board.m_board[file][i]->isEmpty(); --i) {
         m_moves.push_back(board.m_board[file][i]);
     }
     if (i >= 0 && board.m_board[file][i]->piece()->color() != color()) {
@@ -44,7 +44,7 @@ void Queen::generateLineMoves(Board &board, short file, short rank)
     }
 
     /* forward check */
-    for (i = rank; i < 8 && board.m_board[file][i]->isEmpty(); ++i) {
+    for (i = rank + 1; i < 8 && board.m_board[file][i]->isEmpty(); ++i) {
         m_moves.push_back(board.m_board[file][i]);
     }
     if (i < 8 && board.m_board[file][i]->piece()->color() != color()) {
