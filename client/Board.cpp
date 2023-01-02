@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include "Game.hpp"
 #include "Pieces/Pawn.hpp"
 #include "Pieces/Castle.hpp"
 #include "Pieces/Knight.hpp"
@@ -91,6 +92,7 @@ void Board::handleMouseEvt(const sf::Vector2f &pos)
     /* click was on a square that is a potential destination for selected piece */
     if (m_highlightedSquare && m_board[indices.first][indices.second]->isHighlighted() && m_highlightedSquare != m_board[indices.first][indices.second]) {
         if (!m_board[indices.first][indices.second]->isEmpty() && m_board[indices.first][indices.second]->piece()->color() != m_highlightedSquare->piece()->color()) {
+            m_game->pwhite()->updatePts(m_board[indices.first][indices.second]->piece()->pts());
             m_board[indices.first][indices.second]->delPiece();
         }
         m_highlightedSquare->piece()->move(m_board[indices.first][indices.second]);
@@ -140,4 +142,9 @@ void Board::dehighlight(Square *square)
     if (square) {
         square->setFillColor(square->color());
     }
+}
+
+void Board::setGame(Game *game)
+{
+    m_game = game;
 }

@@ -5,12 +5,15 @@
 
 #include <SFML/Graphics.hpp>
 
+class Game;
+
 class Board
 {
 public:
     Board();
     void draw(sf::RenderWindow &window);
     void handleMouseEvt(const sf::Vector2f &pos);
+    void setGame(Game *game);
     
     Square *m_board[8][8];
 private:
@@ -23,6 +26,7 @@ private:
     sf::Vector2f m_startPos;
     Square *m_highlightedSquare;
     std::vector<Square*> m_highlightedSquares;
+    Game *m_game;
 };
 
 #endif

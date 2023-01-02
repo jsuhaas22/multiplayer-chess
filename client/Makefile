@@ -4,7 +4,7 @@ chess : main.o Board.o Square.o Game.o Player.o Piece.o Pawn.o Castle.o Knight.o
 main.o : main.cpp Board.hpp
 	g++ -c main.cpp
 
-Board.o : Board.cpp Board.hpp Pieces/Pawn.hpp Pieces/Castle.hpp
+Board.o : Board.cpp Board.hpp Game.hpp Pieces/Pawn.hpp Pieces/Castle.hpp
 	g++ -c Board.cpp
 
 Square.o : Square.cpp Square.hpp Pieces/Piece.hpp

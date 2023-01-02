@@ -1,5 +1,12 @@
 #include "Game.hpp"
 
+Game::Game()
+{
+    m_pwhite = new Player("white", Piece::White);
+    m_pblack = new Player("black", Piece::Black);
+    m_board.setGame(this);
+}
+
 void Game::gameLoop(sf::RenderWindow &window)
 {
     while (window.isOpen()) {
@@ -15,4 +22,14 @@ void Game::gameLoop(sf::RenderWindow &window)
         m_board.draw(window);
         window.display();
     }
+}
+
+Player* Game::pwhite()
+{
+    return m_pwhite;
+}
+
+Player* Game::pblack()
+{
+    return m_pblack;
 }
