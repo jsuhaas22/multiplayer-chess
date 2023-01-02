@@ -1,5 +1,5 @@
-chess : main.o Board.o Square.o Game.o Piece.o Pawn.o Castle.o Knight.o Bishop.o Queen.o King.o
-	g++ -lsfml-graphics -lsfml-window -lsfml-system main.o Board.o Square.o Game.o Piece.o Pawn.o Castle.o Knight.o Bishop.o Queen.o King.o -o chess
+chess : main.o Board.o Square.o Game.o Player.o Piece.o Pawn.o Castle.o Knight.o Bishop.o Queen.o King.o
+	g++ -lsfml-graphics -lsfml-window -lsfml-system main.o Board.o Square.o Game.o Player.o Piece.o Pawn.o Castle.o Knight.o Bishop.o Queen.o King.o -o chess
 
 main.o : main.cpp Board.hpp
 	g++ -c main.cpp
@@ -12,6 +12,9 @@ Square.o : Square.cpp Square.hpp Pieces/Piece.hpp
 
 Game.o : Game.cpp Game.hpp
 	g++ -c Game.cpp
+
+Player.o : Player.cpp Player.hpp
+	g++ -c Player.cpp
 
 Piece.o : Pieces/Piece.cpp Pieces/Piece.hpp
 	g++ -c Pieces/Piece.cpp
@@ -35,4 +38,4 @@ King.o : Pieces/King.cpp Pieces/King.hpp
 	g++ -c Pieces/King.cpp
 
 clean:
-	rm chess main.o Square.o Board.o Game.o Piece.o Pawn.o Castle.o Knight.o Bishop.o Queen.o King.o
+	rm chess main.o Square.o Board.o Game.o Player.o Piece.o Pawn.o Castle.o Knight.o Bishop.o Queen.o King.o
