@@ -90,6 +90,9 @@ void Board::handleMouseEvt(const sf::Vector2f &pos)
     
     /* click was on a square that is a potential destination for selected piece */
     if (m_highlightedSquare && m_board[indices.first][indices.second]->isHighlighted() && m_highlightedSquare != m_board[indices.first][indices.second]) {
+        if (!m_board[indices.first][indices.second]->isEmpty() && m_board[indices.first][indices.second]->piece()->color() != m_highlightedSquare->piece()->color()) {
+            m_board[indices.first][indices.second]->delPiece();
+        }
         m_highlightedSquare->piece()->move(m_board[indices.first][indices.second]);
         m_highlightedSquare->setPiece(nullptr);
     }

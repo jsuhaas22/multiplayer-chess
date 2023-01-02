@@ -79,3 +79,9 @@ void Square::setColor(sf::Color color)
     m_color = color;
     setFillColor(m_color);
 }
+
+void Square::delPiece()
+{
+    delete m_piece;
+    m_piece = nullptr;
+}

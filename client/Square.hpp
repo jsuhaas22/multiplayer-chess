@@ -23,6 +23,7 @@ public:
     void setPiece(Piece *piece);
     void setRankFile(short rank, short file);
     void setColor(sf::Color color);
+    void delPiece();
 
     void draw(sf::RenderWindow &window);
 
