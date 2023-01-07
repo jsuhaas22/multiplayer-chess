@@ -106,6 +106,7 @@ void Board::handleMouseEvt(const sf::Vector2f &pos)
         m_highlightedSquare->piece()->move(m_board[indices.first][indices.second]);
         m_highlightedSquare->setPiece(nullptr);
         generateMoves(indices);
+        generateMoves(std::pair<short, short>(m_highlightedSquare->file(), m_highlightedSquare->rank()));
     }
     dehighlightSquares();
     m_highlightedSquare = nullptr;
