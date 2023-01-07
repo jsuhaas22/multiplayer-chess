@@ -94,4 +94,5 @@ void Square::addPiece(Piece *p)
         }
     }
     m_pieces.push_back(p);
+    p->addInfluenceSq(this);
 }

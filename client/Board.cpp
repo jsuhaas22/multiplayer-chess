@@ -161,8 +161,15 @@ void Board::setGame(Game *game)
 
 void Board::generateMoves(const std::pair<short, short> &indices)
 {
+    std::vector<int> toRemove;
     Square *sq = m_board[indices.first][indices.second];
     for (int i = 0; i < sq->m_pieces.size(); ++i) {
         sq->m_pieces[i]->generateMoves(*this);
+        if (!sq->m_pieces[i]->squareExists(sq->file(), sq->rank())) {
+            toRemove.push_back(i);
+        }
+    }
+    for (int i = toRemove.size() - 1; i >= 0; --i) {
+        sq->m_pieces.erase(sq->m_pieces.begin() + toRemove[i]);
     }
 }
