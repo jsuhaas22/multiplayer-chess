@@ -19,7 +19,7 @@ Player.o : Player.cpp Player.hpp
 Piece.o : Pieces/Piece.cpp Pieces/Piece.hpp
 	g++ -c Pieces/Piece.cpp
 
-Pawn.o : Pieces/Pawn.cpp Pieces/Pawn.hpp
+Pawn.o : Pieces/Pawn.cpp Pieces/Pawn.hpp Helper.hpp
 	g++ -c Pieces/Pawn.cpp
 
 Castle.o : Pieces/Castle.cpp Pieces/Castle.hpp
