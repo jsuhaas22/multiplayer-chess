@@ -85,3 +85,13 @@ void Square::delPiece()
     delete m_piece;
     m_piece = nullptr;
 }
+
+void Square::addPiece(Piece *p)
+{
+    for (int i = 0; i < m_pieces.size(); ++i) {
+        if (m_pieces[i] == p) {
+            return;
+        }
+    }
+    m_pieces.push_back(p);
+}
