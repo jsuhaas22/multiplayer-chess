@@ -33,6 +33,16 @@ void Piece::setSquare(Square *square)
     setPosition(m_square->pos());
 }
 
+void Piece::addInfluenceSq(Square *square)
+{
+    for (int i = 0; i < m_influences.size(); ++i) {
+        if (m_influences.at(i) == square) {
+            return;
+        }
+    }
+    m_influences.push_back(square);
+}
+
 Square* Piece::square()
 {
     return m_square;
@@ -56,4 +66,14 @@ int Piece::pts() const
 std::vector<Square*> Piece::moves()
 {
     return m_moves;
+}
+
+bool Piece::squareExists(const short file, const short rank) const
+{
+    for (int i = 0; i < m_influences.size(); ++i) {
+        if (m_influences.at(i)->file() == file && m_influences.at(i)->rank() == rank) {
+            return true;
+        }
+    }
+    return false;
 }

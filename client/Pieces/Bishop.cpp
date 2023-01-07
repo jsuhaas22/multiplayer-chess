@@ -15,33 +15,49 @@ void Bishop::generateMoves(Board &board)
 
     /* diagonally left backward */
     for (i = file - 1, j = rank - 1; i >= 0 && j >= 0 && board.m_board[i][j]->isEmpty(); --i, --j) {
+        board.m_board[i][j]->addPiece(this);
         m_moves.push_back(board.m_board[i][j]);
     }
-    if (i >= 0 && j >= 0 && board.m_board[i][j]->piece()->color() != color()) {
-        m_moves.push_back(board.m_board[i][j]);
+    if (i >= 0 && j >= 0) {
+        board.m_board[i][j]->addPiece(this);
+        if (board.m_board[i][j]->piece()->color() != color()) {
+            m_moves.push_back(board.m_board[i][j]);
+        }
     }
 
     /* diagonally right backward */
     for (i = file + 1, j = rank - 1; i < 8 && j >= 0 && board.m_board[i][j]->isEmpty(); ++i, --j) {
+        board.m_board[i][j]->addPiece(this);
         m_moves.push_back(board.m_board[i][j]);
     }
-    if (i < 8 && j >= 0 && board.m_board[i][j]->piece()->color() != color()) {
-        m_moves.push_back(board.m_board[i][j]);
+    if (i < 8 && j >= 0) {
+        board.m_board[i][j]->addPiece(this);
+        if (board.m_board[i][j]->piece()->color() != color()) {
+            m_moves.push_back(board.m_board[i][j]);
+        }
     }
 
     /* diagonally left forward */
     for (i = file - 1, j = rank + 1; i >= 0 && j < 8 && board.m_board[i][j]->isEmpty(); --i, ++j) {
+        board.m_board[i][j]->addPiece(this);
         m_moves.push_back(board.m_board[i][j]);
     }
-    if (i >= 0 && j < 8 && board.m_board[i][j]->piece()->color() != color()) {
-        m_moves.push_back(board.m_board[i][j]);
+    if (i >= 0 && j < 8) {
+        board.m_board[i][j]->addPiece(this);
+        if (board.m_board[i][j]->piece()->color() != color()) {
+            m_moves.push_back(board.m_board[i][j]);
+        }
     }
 
     /* diagonally right forward */
     for (i = file + 1, j = rank + 1; i < 8 && j < 8 && board.m_board[i][j]->isEmpty(); ++i, ++j) {
+        board.m_board[i][j]->addPiece(this);
         m_moves.push_back(board.m_board[i][j]);
     }
-    if (i < 8 && j < 8 && board.m_board[i][j]->piece()->color() != color()) {
-        m_moves.push_back(board.m_board[i][j]);
+    if (i < 8 && j < 8) {
+        board.m_board[i][j]->addPiece(this);
+        if (board.m_board[i][j]->piece()->color() != color()) {
+            m_moves.push_back(board.m_board[i][j]);
+        }
     }
 }

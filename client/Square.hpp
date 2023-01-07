@@ -24,11 +24,13 @@ public:
     void setRankFile(short rank, short file);
     void setColor(sf::Color color);
     void delPiece();
+    void addPiece(Piece *p);
 
     void draw(sf::RenderWindow &window);
 
-private:
     std::vector<Piece*> m_pieces; /* pieces that can strike at the square */
+
+private:
     Piece *m_piece; /* piece currently on it */
     sf::Color m_color; /* colour of the square */
     short m_rank;
