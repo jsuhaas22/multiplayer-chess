@@ -37,7 +37,7 @@ Bishop.o : Pieces/Bishop.cpp Pieces/Bishop.hpp
 Queen.o : Pieces/Queen.cpp Pieces/Queen.hpp
 	g++ -c Pieces/Queen.cpp
 
-King.o : Pieces/King.cpp Pieces/King.hpp
+King.o : Pieces/King.cpp Pieces/King.hpp Helper.hpp
 	g++ -c Pieces/King.cpp
 
 clean:
