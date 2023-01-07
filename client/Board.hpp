@@ -22,6 +22,7 @@ private:
     void highlightSquares();
     void dehighlightSquares();
     void dehighlight(Square *square);
+    void generateMoves(const std::pair<short, short> &indices);
 
     sf::Vector2f m_startPos;
     Square *m_highlightedSquare;

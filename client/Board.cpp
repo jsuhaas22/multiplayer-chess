@@ -60,6 +60,14 @@ void Board::populateBoard()
     /* kings */
     new King(Piece::Black, m_board[3][7]);
     new King(Piece::White, m_board[3][0]);
+
+    /* initialize legal moves for each piece */
+    for (int i = 0; i < 8; ++i) {
+        m_board[i][0]->piece()->generateMoves(*this);
+        m_board[i][1]->piece()->generateMoves(*this);
+        m_board[i][7]->piece()->generateMoves(*this);
+        m_board[i][6]->piece()->generateMoves(*this);
+    }
 }
 
 void Board::draw(sf::RenderWindow &window)
@@ -83,7 +91,7 @@ void Board::handleMouseEvt(const sf::Vector2f &pos)
     /* click was on a square with a piece when no piece is already selected */
     if (!m_highlightedSquare && !m_board[indices.first][indices.second]->isEmpty()) {
         m_highlightedSquare = m_board[indices.first][indices.second];
-        m_highlightedSquare->piece()->generateMoves(*this);
+        // m_highlightedSquare->piece()->generateMoves(*this);
         m_highlightedSquares = m_highlightedSquare->piece()->moves();
         highlightSquares();
         return;
@@ -97,6 +105,7 @@ void Board::handleMouseEvt(const sf::Vector2f &pos)
         }
         m_highlightedSquare->piece()->move(m_board[indices.first][indices.second]);
         m_highlightedSquare->setPiece(nullptr);
+        generateMoves(indices);
     }
     dehighlightSquares();
     m_highlightedSquare = nullptr;
@@ -147,4 +156,12 @@ void Board::dehighlight(Square *square)
 void Board::setGame(Game *game)
 {
     m_game = game;
+}
+
+void Board::generateMoves(const std::pair<short, short> &indices)
+{
+    Square *sq = m_board[indices.first][indices.second];
+    for (int i = 0; i < sq->m_pieces.size(); ++i) {
+        sq->m_pieces[i]->generateMoves(*this);
+    }
 }
