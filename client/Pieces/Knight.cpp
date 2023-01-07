@@ -15,7 +15,7 @@ void Knight::generateMoves(Board &board)
 
     if (isInBounds(file - 2, rank - 1)) {
         board.m_board[file - 2][rank - 1]->addPiece(this);
-        if (isMoveValid(file, rank, board)) {
+        if (isMoveValid(file - 2, rank - 1, board)) {
             m_moves.push_back(board.m_board[file - 2][rank - 1]);
         }
     }
@@ -37,10 +37,10 @@ void Knight::generateMoves(Board &board)
             m_moves.push_back(board.m_board[file + 2][rank + 1]);
         }
     }
-    if (isInBounds(file - 1, rank - 1)) {
-        board.m_board[file - 1][rank - 1]->addPiece(this);
-        if (isMoveValid(file - 1, rank - 1, board)) {
-            m_moves.push_back(board.m_board[file - 1][rank - 1]);
+    if (isInBounds(file - 1, rank - 2)) {
+        board.m_board[file - 1][rank - 2]->addPiece(this);
+        if (isMoveValid(file - 1, rank - 2, board)) {
+            m_moves.push_back(board.m_board[file - 1][rank - 2]);
         }
     }
     if (isInBounds(file + 1, rank - 2)) {
