@@ -1,9 +1,9 @@
 #include "Game.hpp"
 
-Game::Game()
+Game::Game(const Piece::Color &color) :
+    m_color(color),
+    m_isTurn(color == Piece::White)
 {
-    m_pwhite = new Player("white", Piece::White);
-    m_pblack = new Player("black", Piece::Black);
     m_board.setGame(this);
 }
 
@@ -12,7 +12,7 @@ void Game::gameLoop(sf::RenderWindow &window)
     while (window.isOpen()) {
         sf::Event evt;
         while (window.pollEvent(evt)) {
-            if (evt.type == sf::Event::MouseButtonPressed) {
+            if (evt.type == sf::Event::MouseButtonPressed && m_isTurn) {
                 m_board.handleMouseEvt(sf::Vector2f(evt.mouseButton.x, evt.mouseButton.y));
             } else if (evt.type == sf::Event::Closed) {
                 return;
@@ -24,12 +24,7 @@ void Game::gameLoop(sf::RenderWindow &window)
     }
 }
 
-Player* Game::pwhite()
+Piece::Color Game::color() const
 {
-    return m_pwhite;
-}
-
-Player* Game::pblack()
-{
-    return m_pblack;
+    return m_color;
 }
