@@ -90,6 +90,9 @@ void Board::handleMouseEvt(const sf::Vector2f &pos)
 
     /* click was on a square with a piece when no piece is already selected */
     if (!m_highlightedSquare && !m_board[indices.first][indices.second]->isEmpty()) {
+        if (m_board[indices.first][indices.second]->piece()->color() != m_game->color()) {
+            return;
+        }
         m_highlightedSquare = m_board[indices.first][indices.second];
         // m_highlightedSquare->piece()->generateMoves(*this);
         m_highlightedSquares = m_highlightedSquare->piece()->moves();
@@ -100,7 +103,7 @@ void Board::handleMouseEvt(const sf::Vector2f &pos)
     /* click was on a square that is a potential destination for selected piece */
     if (m_highlightedSquare && m_board[indices.first][indices.second]->isHighlighted() && m_highlightedSquare != m_board[indices.first][indices.second]) {
         if (!m_board[indices.first][indices.second]->isEmpty() && m_board[indices.first][indices.second]->piece()->color() != m_highlightedSquare->piece()->color()) {
-            m_game->pwhite()->updatePts(m_board[indices.first][indices.second]->piece()->pts());
+            // m_game->pwhite()->updatePts(m_board[indices.first][indices.second]->piece()->pts());
             m_board[indices.first][indices.second]->delPiece();
         }
         m_highlightedSquare->piece()->move(m_board[indices.first][indices.second]);

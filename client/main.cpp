@@ -7,7 +7,7 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Chess");
-    Game g;
+    Game g(Piece::White);
     g.gameLoop(window);
     window.close();
     return 0;

@@ -8,16 +8,15 @@
 class Game
 {
 public:
-    Game();
+    Game(const Piece::Color &color);
     void gameLoop(sf::RenderWindow &window);
 
-    Player *pwhite();
-    Player *pblack();
+    Piece::Color color() const;
 
 private:
-    Player *m_pwhite;
-    Player *m_pblack;
+    Piece::Color m_color; /* this client's color */
     Board m_board;
+    bool m_isTurn; /* true if it is the client's turn to play */
 };
 
 #endif //GAME
