@@ -1,5 +1,5 @@
 chess : main.o Board.o Square.o Game.o Player.o Helper.o Piece.o Pawn.o Castle.o Knight.o Bishop.o Queen.o King.o
-	g++ -lsfml-graphics -lsfml-window -lsfml-system main.o Board.o Square.o Game.o Player.o Helper.o Piece.o Pawn.o Castle.o Knight.o Bishop.o Queen.o King.o -o chess
+	g++ -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network main.o Board.o Square.o Game.o Player.o Helper.o Piece.o Pawn.o Castle.o Knight.o Bishop.o Queen.o King.o -o chess
 
 main.o : main.cpp Board.hpp
 	g++ -c main.cpp

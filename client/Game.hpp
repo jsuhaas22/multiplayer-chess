@@ -14,6 +14,8 @@ public:
     Piece::Color color() const;
 
 private:
+    void connectToServer();
+    
     Piece::Color m_color; /* this client's color */
     Board m_board;
     bool m_isTurn; /* true if it is the client's turn to play */

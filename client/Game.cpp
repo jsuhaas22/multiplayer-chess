@@ -1,10 +1,12 @@
 #include "Game.hpp"
+#include <SFML/Network.hpp>
 
 Game::Game(const Piece::Color &color) :
     m_color(color),
     m_isTurn(color == Piece::White)
 {
     m_board.setGame(this);
+    connectToServer();
 }
 
 void Game::gameLoop(sf::RenderWindow &window)
@@ -27,4 +29,10 @@ void Game::gameLoop(sf::RenderWindow &window)
 Piece::Color Game::color() const
 {
     return m_color;
+}
+
+void Game::connectToServer()
+{
+    sf::TcpSocket socket;
+    socket.connect(sf::IpAddress::LocalHost, 9034);
 }
