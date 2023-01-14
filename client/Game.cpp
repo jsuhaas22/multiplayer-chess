@@ -33,6 +33,12 @@ Piece::Color Game::color() const
 
 void Game::connectToServer()
 {
-    sf::TcpSocket socket;
-    socket.connect(sf::IpAddress::LocalHost, 9034);
+    m_socket.connect(sf::IpAddress::LocalHost, 9034);
+}
+
+void Game::sendMoves(const std::pair<short, short> &dst, const std::pair<short, short> &src)
+{
+    sf::Packet packet;
+    packet << dst.first << dst.second << src.first << src.second;
+    m_socket.send(packet);
 }

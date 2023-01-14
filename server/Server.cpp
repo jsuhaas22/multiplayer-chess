@@ -26,6 +26,16 @@ void Server::runServer()
         if (m_clients.size() == 2) {
             break;
         }
+
+        for (int i = 0; i < m_clients.size(); ++i) {
+            sf::Packet packet;
+            if (m_clients[i]->receive(packet) == sf::Socket::Done) {
+                short dstF, dstR, srcF, srcR;
+                if (packet >> dstF >> dstR >> srcF >> srcR) {
+                    std::cout << dstF << dstR << std::endl << srcF << srcR << std::endl;
+                }
+            }
+        }
     }
 
     std::cout << "Exiting" << std::endl;
