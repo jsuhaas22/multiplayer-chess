@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "../Message.hpp"
 #include <SFML/Network.hpp>
 
 Game::Game(const Piece::Color &color) :
@@ -39,6 +40,6 @@ void Game::connectToServer()
 void Game::sendMoves(const std::pair<short, short> &dst, const std::pair<short, short> &src)
 {
     sf::Packet packet;
-    packet << dst.first << dst.second << src.first << src.second;
+    packet << Message(dst, src);
     m_socket.send(packet);
 }

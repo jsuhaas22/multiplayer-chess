@@ -1,5 +1,7 @@
 #include "Server.hpp"
+#include "../Message.hpp"
 #include <iostream>
+
 Server::Server()
 {
 }
@@ -30,9 +32,9 @@ void Server::runServer()
         for (int i = 0; i < m_clients.size(); ++i) {
             sf::Packet packet;
             if (m_clients[i]->receive(packet) == sf::Socket::Done) {
-                short dstF, dstR, srcF, srcR;
-                if (packet >> dstF >> dstR >> srcF >> srcR) {
-                    std::cout << dstF << dstR << std::endl << srcF << srcR << std::endl;
+                Message m;
+                if (packet >> m) {
+                    std::cout << m.m_dst.first << m.m_dst.second << std::endl << m.m_src.first << m.m_src.second << std::endl;
                 }
             }
         }
