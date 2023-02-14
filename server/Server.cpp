@@ -4,6 +4,7 @@
 
 Server::Server()
 {
+    m_listener.setBlocking(false);
 }
 
 void Server::runServer()
