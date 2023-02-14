@@ -19,6 +19,7 @@ void Server::runServer()
     /* infinite loop accepting connections */
     while (true) {
         client = new sf::TcpSocket();
+        client->setBlocking(false);
         /* if a client requests connection, accept and add it*/
         if (m_listener.accept(*client) == sf::Socket::Done) {
             m_clients.push_back(client);
@@ -29,7 +30,9 @@ void Server::runServer()
         if (m_clients.size() == 2) {
             break;
         }
+    }
 
+    while (true) {
         for (int i = 0; i < m_clients.size(); ++i) {
             sf::Packet packet;
             if (m_clients[i]->receive(packet) == sf::Socket::Done) {
