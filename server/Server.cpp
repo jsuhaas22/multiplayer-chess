@@ -40,6 +40,10 @@ void Server::runServer()
                 if (packet >> m) {
                     std::cout << m.m_dst.first << m.m_dst.second << std::endl << m.m_src.first << m.m_src.second << std::endl;
                 }
+                for (int j = 0; j < m_clients.size(); ++j) {
+                    if (j == i) continue;
+                    m_clients[j]->send(packet);
+                }
             }
         }
     }

@@ -178,3 +178,11 @@ void Board::generateMoves(const std::pair<short, short> &indices)
         sq->m_pieces.erase(sq->m_pieces.begin() + toRemove[i]);
     }
 }
+
+void Board::playMove(Message m)
+{
+    m_board[m.m_src.first][m.m_src.second]->piece()->move(m_board[m.m_dst.first][m.m_dst.second]);
+    m_board[m.m_src.first][m.m_src.second]->setPiece(nullptr);
+    generateMoves(m.m_src);
+    generateMoves(m.m_dst);
+}

@@ -15,8 +15,13 @@ void Game::gameLoop(sf::RenderWindow &window)
     while (window.isOpen()) {
         sf::Event evt;
         while (window.pollEvent(evt)) {
+            sf::Packet packet;
             if (evt.type == sf::Event::MouseButtonPressed && m_isTurn) {
                 m_board.handleMouseEvt(sf::Vector2f(evt.mouseButton.x, evt.mouseButton.y));
+            } else if (m_socket.receive(packet) == sf::Socket::Done) {
+                Message m;
+                packet >> m;
+                m_board.playMove(m);
             } else if (evt.type == sf::Event::Closed) {
                 return;
             }
@@ -34,6 +39,7 @@ Piece::Color Game::color() const
 
 void Game::connectToServer()
 {
+    m_socket.setBlocking(false);
     m_socket.connect(sf::IpAddress::LocalHost, 9034);
 }
 
