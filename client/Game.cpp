@@ -1,6 +1,7 @@
 #include "Game.hpp"
 #include "../Message.hpp"
 #include <SFML/Network.hpp>
+#include <iostream>
 
 Game::Game(const Piece::Color &color) :
     m_color(color),
@@ -39,8 +40,12 @@ Piece::Color Game::color() const
 
 void Game::connectToServer()
 {
+    if (m_socket.connect(sf::IpAddress::LocalHost, 9034) != sf::Socket::Done) {
+        // TODO: add a dialog here later
+        std::cout << "Couldn't connect to server. Exiting." << std::endl;
+        exit(1);
+    }
     m_socket.setBlocking(false);
-    m_socket.connect(sf::IpAddress::LocalHost, 9034);
 }
 
 void Game::sendMoves(const std::pair<short, short> &dst, const std::pair<short, short> &src)
