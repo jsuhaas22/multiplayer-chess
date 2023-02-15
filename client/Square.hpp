@@ -17,6 +17,7 @@ public:
     sf::Vector2f pos() const;
     short rank() const;
     short file() const;
+    std::pair<short, short> position() const;
     bool isEmpty() const;
     bool isHighlighted() const;
 

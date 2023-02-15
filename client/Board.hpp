@@ -2,6 +2,7 @@
 #define BOARD
 
 #include "Square.hpp"
+#include "../Message.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -14,6 +15,7 @@ public:
     void draw(sf::RenderWindow &window);
     void handleMouseEvt(const sf::Vector2f &pos);
     void setGame(Game *game);
+    void playMove(Message m);
     
     Square *m_board[8][8];
 private:

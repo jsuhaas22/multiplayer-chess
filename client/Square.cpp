@@ -45,6 +45,11 @@ short Square::file() const
     return m_file;
 }
 
+std::pair<short, short> Square::position() const
+{
+    return std::pair<short, short>(m_file, m_rank);
+}
+
 bool Square::isEmpty() const
 {
     return m_piece == nullptr;

@@ -110,6 +110,8 @@ void Board::handleMouseEvt(const sf::Vector2f &pos)
         m_highlightedSquare->setPiece(nullptr);
         generateMoves(indices);
         generateMoves(std::pair<short, short>(m_highlightedSquare->file(), m_highlightedSquare->rank()));
+        m_game->sendMoves(indices, m_highlightedSquare->position());
+
     }
     dehighlightSquares();
     m_highlightedSquare = nullptr;
@@ -175,4 +177,12 @@ void Board::generateMoves(const std::pair<short, short> &indices)
     for (int i = toRemove.size() - 1; i >= 0; --i) {
         sq->m_pieces.erase(sq->m_pieces.begin() + toRemove[i]);
     }
+}
+
+void Board::playMove(Message m)
+{
+    m_board[m.m_src.first][m.m_src.second]->piece()->move(m_board[m.m_dst.first][m.m_dst.second]);
+    m_board[m.m_src.first][m.m_src.second]->setPiece(nullptr);
+    generateMoves(m.m_src);
+    generateMoves(m.m_dst);
 }

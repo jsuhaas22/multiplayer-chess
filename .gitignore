@@ -1,6 +1,7 @@
 *.swp
 *.o
 chess
+server
 a.out
 TODO
 .vscode/
