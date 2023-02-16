@@ -3,9 +3,8 @@
 #include <SFML/Network.hpp>
 #include <iostream>
 
-Game::Game(const Piece::Color &color) :
-    m_color(color),
-    m_isTurn(color == Piece::White),
+Game::Game() :
+    m_isTurn(false),
     m_hasGameBegun(false)
 {
     m_board.setGame(this);
@@ -27,6 +26,13 @@ void Game::gameLoop(sf::RenderWindow &window)
                     // TODO: add a dialog or someother message with other player's
                     // information here, once the Player class is developed further
                     m_hasGameBegun = true;
+                    if (m.m_content == "white") {
+                        m_color = Piece::White;
+                        m_isTurn = true;
+                    } else if (m.m_content == "black") {
+                        m_color = Piece::Black;
+                        m_isTurn = false;
+                    }
                 } else if (m.m_type == 1 && m_hasGameBegun) {
                     m_board.playMove(m);
                 }
