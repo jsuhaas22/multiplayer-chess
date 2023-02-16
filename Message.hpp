@@ -9,6 +9,12 @@ public:
     Message();
     Message(const std::pair<sf::Int16, sf::Int16> &dst, const std::pair<sf::Int16, sf::Int16> &src);
 
+    /* m_type:
+     * 1: moves
+     * 2: other player has connected (and the game may begin)
+     * 3: other player has disconnected (and the game thus ends)
+     * 4: you have disconnected (and the game thus ends)
+     */
     short m_type;
     std::string m_content;
     std::pair<sf::Int16, sf::Int16> m_dst;
