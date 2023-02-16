@@ -33,6 +33,7 @@ void Game::gameLoop(sf::RenderWindow &window)
                         m_color = Piece::Black;
                         m_isTurn = false;
                     }
+                    m_board.populateBoard();
                 } else if (m.m_type == 1 && m_hasGameBegun) {
                     m_board.playMove(m);
                 }

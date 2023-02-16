@@ -15,11 +15,11 @@ public:
     void draw(sf::RenderWindow &window);
     void handleMouseEvt(const sf::Vector2f &pos);
     void setGame(Game *game);
+    void populateBoard();
     void playMove(Message m);
     
     Square *m_board[8][8];
 private:
-    void populateBoard();
     std::pair<short, short> posToIndices(const sf::Vector2f &pos);
     void highlightSquares();
     void dehighlightSquares();

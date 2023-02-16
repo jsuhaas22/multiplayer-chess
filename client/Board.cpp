@@ -24,42 +24,46 @@ Board::Board()
     }
     
     m_highlightedSquare = nullptr;
-    populateBoard();
+    m_game = nullptr;
+    // populateBoard();
 }
 
 void Board::populateBoard()
 {
+    Piece::Color thisColor = m_game->color();
+    Piece::Color oppColor = thisColor == Piece::White ? Piece::Black : Piece::White;
+
     /* pawns */
     for (int i = 0; i < 8; ++i) {
-        new Pawn(Piece::White, m_board[i][1]);
-        new Pawn(Piece::Black, m_board[i][6]);
+        new Pawn(thisColor, m_board[i][1]);
+        new Pawn(oppColor, m_board[i][6]);
     }
 
     /* castles */
-    new Castle(Piece::Black, m_board[7][7]);
-    new Castle(Piece::Black, m_board[0][7]);
-    new Castle(Piece::White, m_board[0][0]);
-    new Castle(Piece::White, m_board[7][0]);
+    new Castle(oppColor, m_board[7][7]);
+    new Castle(oppColor, m_board[0][7]);
+    new Castle(thisColor, m_board[0][0]);
+    new Castle(thisColor, m_board[7][0]);
 
     /* knights */
-    new Knight(Piece::Black, m_board[1][7]);
-    new Knight(Piece::Black, m_board[6][7]);
-    new Knight(Piece::White, m_board[1][0]);
-    new Knight(Piece::White, m_board[6][0]);
+    new Knight(oppColor, m_board[1][7]);
+    new Knight(oppColor, m_board[6][7]);
+    new Knight(thisColor, m_board[1][0]);
+    new Knight(thisColor, m_board[6][0]);
 
     /* bishops */
-    new Bishop(Piece::Black, m_board[2][7]);
-    new Bishop(Piece::Black, m_board[5][7]);
-    new Bishop(Piece::White, m_board[2][0]);
-    new Bishop(Piece::White, m_board[5][0]);
+    new Bishop(oppColor, m_board[2][7]);
+    new Bishop(oppColor, m_board[5][7]);
+    new Bishop(thisColor, m_board[2][0]);
+    new Bishop(thisColor, m_board[5][0]);
 
     /* queens */
-    new Queen(Piece::Black, m_board[4][7]);
-    new Queen(Piece::White, m_board[4][0]);
+    new Queen(oppColor, m_board[4][7]);
+    new Queen(thisColor, m_board[4][0]);
 
     /* kings */
-    new King(Piece::Black, m_board[3][7]);
-    new King(Piece::White, m_board[3][0]);
+    new King(oppColor, m_board[3][7]);
+    new King(thisColor, m_board[3][0]);
 
     /* initialize legal moves for each piece */
     for (int i = 0; i < 8; ++i) {
