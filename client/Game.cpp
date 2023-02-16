@@ -21,7 +21,7 @@ void Game::gameLoop(sf::RenderWindow &window)
                 m_board.handleMouseEvt(sf::Vector2f(evt.mouseButton.x, evt.mouseButton.y));
             } else if (m_socket.receive(packet) == sf::Socket::Done) {
                 Message m;
-                packet >> m;
+                m.extractPacket(packet);
                 m_board.playMove(m);
             } else if (evt.type == sf::Event::Closed) {
                 return;
@@ -51,6 +51,8 @@ void Game::connectToServer()
 void Game::sendMoves(const std::pair<short, short> &dst, const std::pair<short, short> &src)
 {
     sf::Packet packet;
-    packet << Message(dst, src);
+    Message m;
+    m.fillMessage(1, src, dst);
+    m.fillPacket(packet);
     m_socket.send(packet);
 }

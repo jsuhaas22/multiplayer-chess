@@ -10,12 +10,35 @@ Message::Message(const std::pair<sf::Int16, sf::Int16> &dst, const std::pair<sf:
 {
 }
 
-sf::Packet& operator <<(sf::Packet &packet, const Message &msg)
+void Message::fillMessage(const short type, const std::string &content)
 {
-    return packet << msg.m_dst.first << msg.m_dst.second << msg.m_src.first << msg.m_src.second;
+    m_type = type;
+    m_content = content;
+    m_src = m_dst = std::pair(-1, -1);
 }
 
-sf::Packet& operator >>(sf::Packet &packet, Message &msg)
+void Message::fillMessage(const short type, const std::pair<short, short> &src, const std::pair<short, short> &dst)
 {
-    return packet >> msg.m_dst.first >> msg.m_dst.second >> msg.m_src.first >> msg.m_src.second;
+    m_type = type;
+    m_content = "";
+    m_src = src;
+    m_dst = dst;
+}
+
+void Message::fillMessage(const short type, const std::string &content, const std::pair<short, short> &src, const std::pair<short, short> &dst)
+{
+    m_type = type;
+    m_content = content;
+    m_src = src;
+    m_dst = dst;
+}
+
+bool Message::fillPacket(sf::Packet &packet)
+{
+    return packet << m_type << m_content << m_src.first << m_src.second << m_dst.first << m_dst.second;
+}
+
+bool Message::extractPacket(sf::Packet &packet)
+{
+    return packet >> m_type >> m_content >> m_src.first >> m_src.second >> m_dst.first >> m_dst.second;
 }

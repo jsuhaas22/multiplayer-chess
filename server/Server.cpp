@@ -37,7 +37,7 @@ void Server::runServer()
             sf::Packet packet;
             if (m_clients[i]->receive(packet) == sf::Socket::Done) {
                 Message m;
-                if (packet >> m) {
+                if (m.extractPacket(packet)) {
                     std::cout << m.m_dst.first << m.m_dst.second << std::endl << m.m_src.first << m.m_src.second << std::endl;
                 }
                 for (int j = 0; j < m_clients.size(); ++j) {
