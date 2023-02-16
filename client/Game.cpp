@@ -5,7 +5,8 @@
 
 Game::Game(const Piece::Color &color) :
     m_color(color),
-    m_isTurn(color == Piece::White)
+    m_isTurn(color == Piece::White),
+    m_hasGameBegun(false)
 {
     m_board.setGame(this);
     connectToServer();
@@ -22,7 +23,13 @@ void Game::gameLoop(sf::RenderWindow &window)
             } else if (m_socket.receive(packet) == sf::Socket::Done) {
                 Message m;
                 m.extractPacket(packet);
-                m_board.playMove(m);
+                if (m.m_type == 2) {
+                    // TODO: add a dialog or someother message with other player's
+                    // information here, once the Player class is developed further
+                    m_hasGameBegun = true;
+                } else if (m.m_type == 1 && m_hasGameBegun) {
+                    m_board.playMove(m);
+                }
             } else if (evt.type == sf::Event::Closed) {
                 return;
             }

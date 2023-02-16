@@ -21,6 +21,7 @@ private:
     Piece::Color m_color; /* this client's color */
     Board m_board;
     bool m_isTurn; /* true if it is the client's turn to play */
+    bool m_hasGameBegun;
     sf::TcpSocket m_socket;
 };
 

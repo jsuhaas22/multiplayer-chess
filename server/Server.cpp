@@ -28,6 +28,8 @@ void Server::runServer()
 
         /* if more than 2 players have connected, accept no more requests. FOR NOW ONLY. */
         if (m_clients.size() == 2) {
+            Message m;
+            m.fillMessage(2, "start");
             break;
         }
     }
