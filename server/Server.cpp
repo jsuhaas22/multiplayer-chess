@@ -22,8 +22,17 @@ void Server::runServer()
         client->setBlocking(false);
         /* if a client requests connection, accept and add it*/
         if (m_listener.accept(*client) == sf::Socket::Done) {
+            sf::Packet packet;
             m_clients.push_back(client);
             std::cout << client->getRemoteAddress() << " connected" << std::endl;
+            Message m;
+            if (m_clients.size() == 1) {
+                m.fillMessage(2, "white");
+            } else if (m_clients.size() == 2) {
+                m.fillMessage(2, "black");
+            }
+            m.fillPacket(packet);
+            client->send(packet);
         }
 
         /* if more than 2 players have connected, accept no more requests. FOR NOW ONLY. */

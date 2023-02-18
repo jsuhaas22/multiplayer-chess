@@ -9,7 +9,7 @@
 class Game
 {
 public:
-    Game(const Piece::Color &color);
+    Game();
     void gameLoop(sf::RenderWindow &window);
     void sendMoves(const std::pair<short, short> &dst, const std::pair<short, short> &src);
 
